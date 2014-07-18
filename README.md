@@ -1,4 +1,0 @@
-GodMode
-=======
-
-A PocketMine plugin
