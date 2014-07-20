@@ -5,18 +5,18 @@ api: [1.1.0]
 load: POSTWORLD
 author: LDX
 commands:
- god:
-  description: "Toggles God mode for you or the specified player"
-  usage: "/god [player]"
-  permission: godmode.toggle
+  god:
+    description: "Toggles God mode for you or the specified player"
+    usage: "/god [player]"
+    permission: godmode.toggle
 permissions:
- godmode.toggle:
-  description: "Allows the player to toggle God mode"
-  default: op
-  children:
-   godmode.toggle.self:
-    description: "Allows the player to toggle God mode for themselves"
+  godmode.toggle:
+    description: "Allows the player to toggle God mode"
     default: op
-   godmode.toggle.others:
-    description: "Allows the player to toggle God mode for others"
-    default: op
+    children:
+      godmode.toggle.self:
+        description: "Allows the player to toggle God mode for themselves"
+        default: op
+      godmode.toggle.others:
+        description: "Allows the player to toggle God mode for others"
+        default: op
