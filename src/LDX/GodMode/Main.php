@@ -1,5 +1,7 @@
 <?php
+
 namespace LDX\GodMode;
+
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
@@ -8,6 +10,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 use pocketmine\event\entity\EntityDamageEvent;
+
 class Main extends PluginBase implements Listener {
   public function onLoad() {
     $this->getLogger()->info(TextFormat::YELLOW . "Loading GodMode v2.1 by LDX...");
