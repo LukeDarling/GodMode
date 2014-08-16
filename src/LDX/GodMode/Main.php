@@ -8,13 +8,10 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
 class Main extends PluginBase implements Listener {
-  public function onLoad() {
-    $this->getLogger()->info(TextFormat::YELLOW . "Loading GodMode v2.1 by LDX...");
-  }
   public function onEnable() {
     $this->enabled = array();
-    $this->getLogger()->info(TextFormat::YELLOW . "Enabling GodMode...");
     $this->getServer()->getPluginManager()->registerEvents($this,$this);
   }
   public function onCommand(CommandSender $issuer,Command $cmd,$label,array $args) {
@@ -54,7 +51,7 @@ class Main extends PluginBase implements Listener {
   * @param EntityDamageEvent $event
   *
   * @priority HIGHEST
-  * @ignoreCancelled false
+  * @ignoreCancelled true
   */
   public function onHurt(EntityDamageEvent $event) {
     $entity = $event->getEntity();
@@ -64,8 +61,19 @@ class Main extends PluginBase implements Listener {
       }
     }
   }
-  public function onDisable() {
-    $this->getLogger()->info(TextFormat::YELLOW . "Disabling GodMode...");
+  /**
+  * @param EntityDamageByEntityEvent $event
+  *
+  * @priority HIGHEST
+  * @ignoreCancelled true
+  */
+  public function onHurtByEntity(EntityDamageByEntityEvent $event) {
+    $entity = $event->getEntity();
+    if($entity instanceof Player && isset($this->enabled[$entity->getName()])) {
+      if($this->enabled[$entity->getName()]) {
+        $event->setCancelled();
+      }
+    }
   }
 }
 ?>
