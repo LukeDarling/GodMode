@@ -4,6 +4,7 @@ version: 2.2
 api: [1.0.0,1.1.0,1.2.0]
 load: POSTWORLD
 author: LDX
+website: https://github.com/LDX-MCPE/GodMode
 commands:
  god:
   description: "Toggles God mode for you or the specified player"
