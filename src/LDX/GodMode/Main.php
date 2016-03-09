@@ -61,19 +61,4 @@ class Main extends PluginBase implements Listener {
       }
     }
   }
-  /**
-  * @param EntityDamageByEntityEvent $event
-  *
-  * @priority HIGHEST
-  * @ignoreCancelled true
-  */
-  public function onHurtByEntity(EntityDamageByEntityEvent $event) {
-    $entity = $event->getEntity();
-    if($entity instanceof Player && isset($this->enabled[$entity->getName()])) {
-      if($this->enabled[$entity->getName()]) {
-        $event->setCancelled();
-      }
-    }
-  }
 }
-?>
