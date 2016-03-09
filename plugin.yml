@@ -1,7 +1,7 @@
 name: GodMode
 main: LDX\GodMode\Main
-version: 2.2
-api: [1.0.0,1.1.0,1.2.0]
+version: 2.3
+api: [1.0.0, 2.0.0]
 load: POSTWORLD
 author: LDX
 website: https://github.com/LDX-MCPE/GodMode
@@ -11,13 +11,17 @@ commands:
   usage: "/god [player]"
   permission: godmode.toggle
 permissions:
- godmode.toggle:
-  description: "Allows the player to toggle God mode"
-  default: op
-  children:
-   godmode.toggle.self:
-    description: "Allows the player to toggle God mode for themselves"
-    default: op
-   godmode.toggle.others:
-    description: "Allows the player to toggle God mode for others"
-    default: op
+  godmode:
+    description: "Allows access to all GodMode features"
+    default: false
+    children:
+      godmode.toggle:
+        description: "Allows the player to toggle God mode"
+        default: false
+        children:
+          godmode.toggle.self:
+            description: "Allows the player to toggle God mode for themselves"
+            default: op
+          godmode.toggle.others:
+            description: "Allows the player to toggle God mode for others"
+            default: op
